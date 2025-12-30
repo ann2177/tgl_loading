@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Links - Telegram Hub</title>
+    
+    <title>ටෙලිග්‍රෑම් ලින්ක් 🔗 - Best Telegram Group Links Directory</title>
+    <meta name="description" content="Join the best Telegram group links on LK Sinhala. Find active Sri Lankan telegram channels, education groups, movie links and more. Updated daily.">
+    <meta name="keywords" content="telegram group links, telegram links, sri lanka telegram, lk sinhala, telegram group link sinhala">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="ටෙලිග්‍රෑම් ලින්ක් - Telegram Group Links">
+    <meta property="og:description" content="Discover and join 1000+ active Telegram groups.">
+    <meta property="og:type" content="website">
+
     <style>
         body {
             background-color: #0e1621;
@@ -42,7 +51,8 @@
         }
 
         .channel-info { flex-grow: 1; }
-        .channel-name { font-size: 18px; font-weight: 500; display: flex; align-items: center; }
+        /* H1 used for SEO but styled to match original exactly */
+        .channel-name { font-size: 18px; font-weight: 500; display: flex; align-items: center; margin: 0; padding: 0; }
         .channel-name span { margin-left: 5px; font-size: 18px; }
         .sub-count { font-size: 13px; color: #7f91a4; margin-top: 2px; }
 
@@ -171,7 +181,6 @@
             box-sizing: border-box;
             z-index: 3000;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
-            /* මුලින්ම පෙනෙන පරිදි තබමු */
             transform: translateY(0);
             transition: transform 0.3s ease-in-out;
         }
@@ -218,13 +227,13 @@
 </head>
 <body>
 
-    <div class="tg-header">
+    <header class="tg-header">
         <div class="back-icon" onclick="location.href='/'">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </div>
         <div class="profile-pic"><span style="color:#000">ටෙලිග්‍රෑම්<br>ලින්ක්</span></div>
         <div class="channel-info">
-            <div class="channel-name">ටෙලිග්‍රෑම් ලින්ක් <span>🔗</span></div>
+            <h1 class="channel-name">ටෙලිග්‍රෑම් ලින්ක් <span>🔗</span></h1>
             <div class="sub-count">11.9K subscribers</div>
         </div>
         <div class="menu-container">
@@ -237,7 +246,7 @@
                 <a onclick="showReportMsg()">Report</a>
             </div>
         </div>
-    </div>
+    </header>
 
     <div class="pinned-notice">
         <div class="pinned-line"></div>
@@ -247,9 +256,9 @@
         </div>
     </div>
 
-    <div id="chat-feed"></div>
+    <main id="chat-feed"></main>
 
-    <div class="bottom-bar" id="bottomBar">
+    <nav class="bottom-bar" id="bottomBar">
         <div class="bottom-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </div>
@@ -261,7 +270,7 @@
         <div class="bottom-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
         </div>
-    </div>
+    </nav>
 
     <script>
         const menuBtn = document.getElementById('menuBtn');
@@ -327,13 +336,11 @@
                 }
             });
             window.scrollTo({top: 0, behavior: 'smooth'});
-            // Category මාරු කළ විට Bar එක නැවත පෙන්වන්න
             bBar.classList.remove('bottom-bar--hidden');
         }
 
         function filterContent() { render(); }
 
-        // --- IMPROVED LOGIC: SHOW ON TOP & ON UP SCROLL ---
         let lastScrollY = window.scrollY;
         const bBar = document.getElementById('bottomBar');
 
@@ -341,19 +348,15 @@
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 10) {
-                // ඉහළටම ගිය විට අනිවාර්යයෙන් පෙන්වන්න
                 bBar.classList.remove('bottom-bar--hidden');
             } 
             else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // පහළට ස්ක්‍රෝල් කරන විට සඟවන්න
                 bBar.classList.add('bottom-bar--hidden');
             } 
             else if (currentScrollY < lastScrollY) {
-                // ඉහළට ස්ක්‍රෝල් කරන විට පෙන්වන්න
                 bBar.classList.remove('bottom-bar--hidden');
             }
 
-            // අවසානයටම ගිය විට අනිවාර්යයෙන් පෙන්වන්න
             if ((window.innerHeight + currentScrollY) >= document.body.offsetHeight - 10) {
                 bBar.classList.remove('bottom-bar--hidden');
             }
