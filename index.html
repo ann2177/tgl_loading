@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>ටෙලිග්‍රෑම් ලින්ක් 🔗 - Best Telegram Group Links Directory</title>
-    <meta name="description" content="Join the best Telegram group links on LK Sinhala. Find active Sri Lankan telegram channels, education groups, movie links and more. Updated daily.">
-    <meta name="keywords" content="telegram group links, telegram links, sri lanka telegram, lk sinhala, telegram group link sinhala">
+    <title>ටෙලිග්‍රෑම් ලින්ක් - Telegram Group Links (Active & Daily Updated)</title>
+    <meta name="description" content="Find the best Telegram group links on LK Sinhala. Daily updated directory for Movies, Trading, Education, and more active Telegram channels.">
+    <meta name="keywords" content="telegram group links, telegram links, sri lankan telegram groups, lk sinhala, join telegram, telegram movie links">
     <meta name="robots" content="index, follow">
     
     <meta property="og:title" content="ටෙලිග්‍රෑම් ලින්ක් - Telegram Group Links">
-    <meta property="og:description" content="Discover and join 1000+ active Telegram groups.">
+    <meta property="og:description" content="Join active Telegram groups. Daily updated links.">
     <meta property="og:type" content="website">
 
     <style>
@@ -51,8 +51,8 @@
         }
 
         .channel-info { flex-grow: 1; }
-        /* H1 used for SEO but styled to match original exactly */
-        .channel-name { font-size: 18px; font-weight: 500; display: flex; align-items: center; margin: 0; padding: 0; }
+        /* Styled H1 to look like original text for SEO */
+        .channel-name { font-size: 18px; font-weight: 500; display: flex; align-items: center; margin: 0; }
         .channel-name span { margin-left: 5px; font-size: 18px; }
         .sub-count { font-size: 13px; color: #7f91a4; margin-top: 2px; }
 
@@ -185,22 +185,11 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        .bottom-bar--hidden {
-            transform: translateY(100%);
-        }
+        .bottom-bar--hidden { transform: translateY(100%); }
 
-        .bottom-icon {
-            color: #7f91a4;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+        .bottom-icon { color: #7f91a4; display: flex; align-items: center; cursor: pointer; }
 
-        .filter-wrapper {
-            flex-grow: 1;
-            margin: 0 15px;
-            position: relative;
-        }
+        .filter-wrapper { flex-grow: 1; margin: 0 15px; position: relative; }
 
         .join-btn-select {
             width: 100%;
@@ -217,15 +206,15 @@
             appearance: none;
             -webkit-appearance: none;
         }
-
-        .join-btn-select option {
-            background-color: #1c2938;
-            color: white;
-        }
-
+        .join-btn-select option { background-color: #1c2938; color: white; }
     </style>
 </head>
 <body>
+
+    <section style="display:none;" aria-hidden="true">
+        <h2>Telegram Group Links</h2>
+        <p>Active Telegram directory for Movies, Trading, Adult, and Sinhala groups. Updated daily.</p>
+    </section>
 
     <header class="tg-header">
         <div class="back-icon" onclick="location.href='/'">
@@ -256,7 +245,7 @@
         </div>
     </div>
 
-    <main id="chat-feed"></main>
+    <main id="chat-feed" role="main"></main>
 
     <nav class="bottom-bar" id="bottomBar">
         <div class="bottom-icon">
@@ -322,16 +311,17 @@
                     displayLinks.forEach(item => {
                         let tgPart = item.url.includes("link=") ? item.url.split("link=")[1] : item.url;
                         let brokenDisplay = tgPart.slice(0, -2);
+                        // Added semantic 'article' and h2 for inner-page SEO
                         feed.innerHTML += `
-                            <div class="message-bubble">
+                            <article class="message-bubble">
                                 <span class="channel-label">ටෙලිග්‍රෑම් ලින්ක් 🔗</span>
-                                <span class="cat-title">${item.title} ${item.emojis}</span>
+                                <h2 class="cat-title" style="margin:0; font-size:16px; font-weight:400;">${item.title} ${item.emojis}</h2>
                                 <a href="${item.url}" class="tg-link" target="_blank">${brokenDisplay}</a>
                                 <div class="message-info">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                                     <span>${item.views}</span><span style="margin-left: 4px;">${item.time}</span>
                                 </div>
-                            </div>`;
+                            </article>`;
                     });
                 }
             });
@@ -346,7 +336,6 @@
 
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
-
             if (currentScrollY <= 10) {
                 bBar.classList.remove('bottom-bar--hidden');
             } 
@@ -356,11 +345,9 @@
             else if (currentScrollY < lastScrollY) {
                 bBar.classList.remove('bottom-bar--hidden');
             }
-
             if ((window.innerHeight + currentScrollY) >= document.body.offsetHeight - 10) {
                 bBar.classList.remove('bottom-bar--hidden');
             }
-            
             lastScrollY = currentScrollY;
         }, { passive: true });
         
