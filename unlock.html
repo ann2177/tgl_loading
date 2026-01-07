@@ -68,6 +68,48 @@
         .dropdown-menu a:hover { background-color: #2b3949; }
         .show { display: block; }
 
+        .pinned-notice {
+            width: 100%;
+            background-color: #1c2733;
+            padding: 7px 15px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 65px;
+            z-index: 1500;
+            border-bottom: 1px solid #0e1621
+        }
+
+        .pinned-line {
+            width: 2px;
+            background-color: #64b5f6;
+            height: 32px;
+            border-radius: 2px;
+            margin-right: 12px
+        }
+
+        .pinned-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .pinned-label {
+            color: #64b5f6;
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .pinned-text {
+            color: #7f91a4;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        
         .page-wrapper {
             flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 20px; box-sizing: border-box; margin-top: 40px; 
@@ -96,6 +138,15 @@
         .progress-fill { background: #40a7e3; height: 100%; width: 0%; transition: width 0.7s ease-in-out; }
     </style>
 </head>
+    <div class="pinned-notice">
+    <div class="pinned-line"></div>
+    <div class="pinned-content">
+        <div class="pinned-label">Pinned Message</div>
+        <div class="pinned-text">
+            ගෲප් වල අන්තර්ගතයන් පිළිබඳ කිසිඳු වගකීමක් අප සතුව නැත.
+        </div>
+    </div>
+</div>
 <body>
 
     <div class="tg-header">
