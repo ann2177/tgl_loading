@@ -190,72 +190,68 @@
     menuBtn.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('show'); });
     window.addEventListener('click', () => dropdown.classList.remove('show'));
 
-    // DYNAMIC LINK & UNLOCK LOGIC
-    (function(_w, _d) {
-        const _AD = "https://intermediategillsevent.com/b7mu5h0rp3?key=db77fcf2b074a2a6aa157288586e339a";
+   // DYNAMIC LINK & UNLOCK LOGIC
+(function(_w, _d) {
+    const _AD = "https://intermediategillsevent.com/b7mu5h0rp3?key=db77fcf2b074a2a6aa157288586e339a";
+    
+    // ... existing _gU() function ...
+
+    var _e = { 
+        u: _d.getElementById("unlockBtn"), 
+        t: _d.getElementById("btnText"), 
+        g: _d.getElementById("goBtn"), 
+        p: _d.getElementById("progressFill"), 
+        s: _d.getElementById("stepCount"), 
+        c: _d.getElementById("checkIcon") 
+    };
+    
+    var _k = "unlocked_" + btoa(_l);
+    var _ts = 0;
+    var _checking = false; // New safety flag
+
+    function _ok() {
+        _e.u.classList.add("completed"); 
+        _e.u.style.pointerEvents = "none"; 
+        _e.t.innerText = "Task Completed";
+        _e.c.innerHTML = "✔"; 
+        _e.s.innerText = "1"; 
+        _e.p.style.width = "100%";
+        _e.g.classList.add("active"); 
+        _e.g.href = _l; 
+        localStorage.setItem(_k, "1");
+    }
+
+    if (localStorage.getItem(_k) === "1") _ok();
+
+    _e.u.addEventListener("click", function() {
+        if (localStorage.getItem(_k) === "1" || _checking) return;
         
-        function _gU() {
-            var q = _w.location.search, m = q.match(/[?&]link=/);
-            if (!m) return null;
-            var r = q.substring(m.index + m[0].length);
-            try { return decodeURIComponent(r); } catch (e) { return r; }
-        }
-
-        var _l = _gU();
-        if (!_l || !_l.startsWith("https://t.me/")) {
-            _d.querySelector('.unlock-card').innerHTML = "<h3>Invalid Link. Please go back to Home.</h3>";
-            return;
-        }
-
-        // Set dynamic title for better browser tab management
-        _d.title = "Unlock Link - ටෙලිග්‍රෑම් ලින්ක්";
-
-        var _e = { 
-            u: _d.getElementById("unlockBtn"), 
-            t: _d.getElementById("btnText"), 
-            g: _d.getElementById("goBtn"), 
-            p: _d.getElementById("progressFill"), 
-            s: _d.getElementById("stepCount"), 
-            c: _d.getElementById("checkIcon") 
-        };
+        _ts = Date.now(); 
+        _checking = true;
+        _w.open(_AD, "_blank"); 
         
-        var _k = "unlocked_" + btoa(_l);
-        var _ts = 0;
+        _e.t.innerText = "Verifying... (5s)";
+        _e.u.style.opacity = "0.7";
+    });
 
-        function _ok() {
-            _e.u.classList.add("completed"); 
-            _e.u.style.pointerEvents = "none"; 
-            _e.t.innerText = "Task Completed";
-            _e.c.innerHTML = "✔"; 
-            _e.c.style.color = "#40a7e3"; 
-            _e.s.innerText = "1"; 
-            _e.p.style.width = "100%";
-            _e.g.classList.add("active"); 
-            _e.g.href = _l; 
-            localStorage.setItem(_k, "1");
+    _w.addEventListener("focus", function() {
+        if (_ts === 0 || localStorage.getItem(_k) === "1") return;
+
+        // Increased to 5 seconds for better Adsterra loading success
+        var elapsed = (Date.now() - _ts) / 1000;
+        
+        if (elapsed >= 5) { 
+            _ok(); 
+            _checking = false;
+        } else { 
+            _e.t.innerText = "ක්ලික් කරලා බැක් වෙන්න"; 
+            _ts = 0; 
+            _checking = false;
+            _e.u.style.opacity = "1";
+            alert("Wait " + (5 - Math.round(elapsed)) + " more seconds on the ad page to verify!"); 
         }
-
-        if (localStorage.getItem(_k) === "1") _ok();
-
-        _e.u.addEventListener("click", function() {
-            if (localStorage.getItem(_k) === "1") return;
-            _ts = Date.now(); 
-            _w.open(_AD, "_blank"); 
-            _e.t.innerText = "Checking... ⏳";
-        });
-
-        _w.addEventListener("focus", function() {
-            if (_ts === 0 || localStorage.getItem(_k) === "1") return;
-            // User must stay away for at least 4 seconds to "verify" the click
-            if ((Date.now() - _ts) / 1000 >= 3) { 
-                _ok(); 
-            } else { 
-                _e.t.innerText = "ක්ලික් කරලා බැක් වෙන්න"; 
-                _ts = 0; 
-                alert("බැක් වෙන්න කලින් තත්පර 3ක් ඉන්න..!"); 
-            }
-        });
-    })(window, document);
+    });
+})(window, document);
 </script>
 </body>
 </html>
