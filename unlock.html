@@ -247,12 +247,12 @@
         _w.addEventListener("focus", function() {
             if (_ts === 0 || localStorage.getItem(_k) === "1") return;
             // User must stay away for at least 4 seconds to "verify" the click
-            if ((Date.now() - _ts) / 1000 >= 2) { 
+            if ((Date.now() - _ts) / 1000 >= 3) { 
                 _ok(); 
             } else { 
                 _e.t.innerText = "ක්ලික් කරලා බැක් වෙන්න"; 
                 _ts = 0; 
-                alert("බැක් වෙන්න කලින් තත්පර 2ක් ඉන්න..!"); 
+                alert("බැක් වෙන්න කලින් තත්පර 3ක් ඉන්න..!"); 
             }
         });
     })(window, document);
