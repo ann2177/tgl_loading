@@ -109,11 +109,10 @@
             text-overflow: ellipsis
         }
 
-        /* Update to page wrapper to prevent content hiding behind bottom bar */
+        
         .page-wrapper {
             flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 20px; box-sizing: border-box; margin-top: 40px; 
-            padding-bottom: 100px; /* Added space for bottom bar */
         }
         .unlock-card {
             width: 100%; max-width: 380px; background-color: #182533; padding: 30px 20px;
@@ -137,39 +136,6 @@
         .status-text { font-size: 13px; margin-bottom: 8px; color: #7f91a4; font-weight: bold; }
         .progress-bg { background: #0e1621; height: 8px; border-radius: 10px; width: 100%; margin-bottom: 25px; overflow: hidden; }
         .progress-fill { background: #40a7e3; height: 100%; width: 0%; transition: width 0.7s ease-in-out; }
-
-        /* NEW STYLES FOR BOTTOM BAR */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #17212b;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            z-index: 3000;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, .5);
-        }
-
-        .contact-btn {
-            width: 100%;
-            max-width: 450px;
-            height: 44px;
-            background-color: #3390ec;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-align: center;
-            line-height: 44px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .contact-btn:active { background-color: #2870b7; }
     </style>
 </head>
     <div class="pinned-notice">
@@ -198,7 +164,7 @@
             </div>
             <div id="myDropdown" class="dropdown-menu">
                 <a href="https://t.me/+r4CGabdtFVg2ZmI1" target="_blank">Join Our Channel</a>
-                <a onclick="alert('Done.')">Report</a>
+                <a href="disclaimer.html">Remove a link</a>
             </div>
         </div>
     </div>
@@ -216,12 +182,6 @@
             <a href="https://t.me/Links_Hub01_bot" class="bot-btn" target="_blank">Add Your Link</a>
         </div>
     </div>
-
-    <nav class="bottom-bar">
-        <a href="https://t.me/tflinkcontactus" target="_blank" class="contact-btn">
-            Remove This Link ⚠️
-        </a>
-    </nav>
 
 <script>
     // MENU LOGIC
