@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /unlock.html
+Disallow: /disclaimer.html
 
 Sitemap: https://telegramgrouplink.online/sitemap.xml
