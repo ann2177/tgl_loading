@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Make a Donation</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon.png">
+    <meta name="robots" content="noindex, follow">
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body {
+            background-color: #0e1621;
+            background-image: radial-gradient(#1c2938 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex; flex-direction: column;
+        }
+
+        .tg-header {
+            width: 100%;
+            background-color: #17212b;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .back-icon { margin-right: 20px; cursor: pointer; display: flex; align-items: center; }
+        
+        .profile-pic {
+            width: 45px; height: 45px;
+            background-color: #2481cc;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold; font-size: 20px;
+            text-align: center; overflow: hidden; flex-shrink: 0;
+        }
+
+        .channel-info { flex-grow: 1; }
+        .channel-name { font-size: 18px; font-weight: 500; display: flex; align-items: center; }
+        .sub-count { font-size: 13px; color: #7f91a4; margin-top: 2px; }
+
+        .page-wrapper {
+            flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20px; box-sizing: border-box; margin-top: 60px; 
+        }
+
+        .donate-card {
+            width: 100%; max-width: 400px; background-color: #182533; padding: 30px 20px;
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); box-sizing: border-box;
+        }
+
+        h3 { font-size: 20px; font-weight: 500; line-height: 1.4; margin-top: 0; margin-bottom: 25px; color: #40a7e3; text-align: center; }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1c2938;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .info-row .label { color: #7f91a4; font-size: 14px; font-weight: 500; }
+        .info-row .value { color: white; font-size: 15px; font-weight: bold; }
+
+        .address-section { margin-top: 20px; }
+        .address-label { color: #7f91a4; font-size: 14px; margin-bottom: 8px; font-weight: 500; margin-left: 5px; }
+
+        /* Copy Box Styles */
+        .copy-container {
+            display: flex;
+            align-items: center;
+            background-color: #0e1621;
+            border: 1px solid #2b3949;
+            border-radius: 8px;
+            padding: 5px;
+            margin-bottom: 0;
+        }
+
+        .copy-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: #64b5f6;
+            font-size: 11.5px; /* Size adjusted to fit the 34-character TRC20 address */
+            font-family: 'Courier New', Courier, monospace; /* Monospace so characters align neatly */
+            padding: 10px;
+            outline: none;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .copy-btn {
+            background-color: #2481cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover { background-color: #1d6fa5; }
+        .copy-btn.success { background-color: #0088cc; }
+
+    </style>
+</head>
+<body>
+
+    <div class="tg-header">
+        <div class="back-icon" onclick="history.back()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </div>
+        <div class="profile-pic">💰</div>
+        <div class="channel-info">
+            <div class="channel-name">Make a</div>
+            <div class="sub-count">Donation</div>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="donate-card">
+            <h3>Make a Donation</h3>
+            
+            <div class="info-row">
+                <span class="label">Coin:</span>
+                <span class="value">USDT</span>
+            </div>
+            
+            <div class="info-row">
+                <span class="label">Network:</span>
+                <span class="value">TRC20 (Tron)</span>
+            </div>
+
+            <div class="address-section">
+                <div class="address-label">Address:</div>
+                <div class="copy-container">
+                    <input type="text" id="walletAddress" class="copy-input" value="TUmGeFYEnLBtLb1ymF7gBUw84ASQvMTdet" readonly>
+                    <button id="copyBtn" class="copy-btn" onclick="copyAddress()">Copy</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+<script>
+    function copyAddress() {
+        var copyText = document.getElementById("walletAddress");
+        var copyBtn = document.getElementById("copyBtn");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            // Change button text to indicate success
+            copyBtn.innerText = "Copied! ✔";
+            copyBtn.classList.add("success");
+
+            // Reset button text after 2.5 seconds
+            setTimeout(() => {
+                copyBtn.innerText = "Copy";
+                copyBtn.classList.remove("success");
+            }, 2500);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            copyBtn.innerText = "Error";
+        });
+    }
+</script>
+</body>
+</html>
