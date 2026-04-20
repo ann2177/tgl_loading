@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Make a Donation</title>
+    <title>Donate - Support Us</title>
     <link rel="icon" type="image/png" sizes="96x96" href="./favicon.png">
     <meta name="robots" content="noindex, follow">
     <style>
@@ -89,8 +89,8 @@
             background: transparent;
             border: none;
             color: #64b5f6;
-            font-size: 11.5px; /* Size adjusted to fit the 34-character TRC20 address */
-            font-family: 'Courier New', Courier, monospace; /* Monospace so characters align neatly */
+            font-size: 11.5px;
+            font-family: 'Courier New', Courier, monospace;
             padding: 10px;
             outline: none;
             min-width: 0;
@@ -113,6 +113,17 @@
         .copy-btn:hover { background-color: #1d6fa5; }
         .copy-btn.success { background-color: #0088cc; }
 
+        /* Warning Note Styles */
+        .warning-note {
+            color: #7f91a4;
+            font-size: 13px;
+            margin-top: 20px;
+            line-height: 1.5;
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+        }
+
     </style>
 </head>
 <body>
@@ -123,8 +134,8 @@
         </div>
         <div class="profile-pic">💰</div>
         <div class="channel-info">
-            <div class="channel-name">Make a Donation</div>
-            <div class="sub-count">via USDT</div>
+            <div class="channel-name">Support Us</div>
+            <div class="sub-count">Make a Donation</div>
         </div>
     </div>
 
@@ -149,7 +160,10 @@
                     <button id="copyBtn" class="copy-btn" onclick="copyAddress()">Copy</button>
                 </div>
             </div>
-            
+        </div>
+        
+        <div class="warning-note">
+            <strong>Note:</strong> Please send ONLY USDT via the TRC20 network. Sending any other coin or using a different network may result in permanent loss.
         </div>
     </div>
 
